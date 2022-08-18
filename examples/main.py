@@ -6,7 +6,7 @@ import time
 import atexit
 
 # create a default object, no changes to I2C address or frequency
-mh = Adafruit_MotorHAT(freq=3200)
+mh = Adafruit_MotorHAT()
 
 # recommended for auto-disabling motors on shutdown!
 def turnOffMotors():
@@ -18,7 +18,21 @@ def turnOffMotors():
 atexit.register(turnOffMotors)
 
 myStepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
-myStepper.setSpeed(30000)             # 30 RPM
+myStepper.setSpeed(30)             # 30 RPM
+
+start = time.time()
+myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+myStepper.step(200, Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
+print(time.time()-start)
+
+myStepper.setSpeed(300)             # 30 RPM
+
+start = time.time()
+myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+myStepper.step(200, Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
+print(time.time()-start)
+
+myStepper.setSpeed(3000)             # 30 RPM
 
 start = time.time()
 myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
