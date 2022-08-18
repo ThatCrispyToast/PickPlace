@@ -25,7 +25,7 @@ def main():
     while True:
         myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
         c += 1
-        print(f"{c} Rotations")
+        print(c, " Rotations")
 
 if __name__ == "__main__":
     main()
