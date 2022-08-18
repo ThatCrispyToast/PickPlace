@@ -31,6 +31,7 @@ def main():
         time.sleep(0.5)
         myStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
         c += 1
+        print(c)
 
     # c = 0
     # while True:
