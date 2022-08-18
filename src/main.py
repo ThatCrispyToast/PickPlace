@@ -36,13 +36,11 @@ def main():
     st1 = threading.Thread(target=x_control, args=(myStepper,))
     st2 = threading.Thread(target=y_control, args=(myStepper2,))
 
-    # st1.setDaemon(True)
-    # st2.setDaemon(True)
-
     st1.start()
     st2.start()
 
-    time.sleep(50)
+    st1.join()
+    st2.join()
 
 
 if __name__ == "__main__":
