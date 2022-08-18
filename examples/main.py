@@ -28,7 +28,7 @@ def main():
 
     c = 0
     while True:
-        x = input()
+        print(input())
         myStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
         c += 1
 
