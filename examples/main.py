@@ -21,11 +21,13 @@ def main():
     myStepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
     myStepper.setSpeed(3000)             # 30 RPM
 
+    myStepper.step(1400, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+
     c = 0
     while True:
-        myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+        myStepper.step(50, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
         c += 1
-        print(c, " Rotations")
+        print(c, " 1/4 Rotations")
 
 if __name__ == "__main__":
     main()
