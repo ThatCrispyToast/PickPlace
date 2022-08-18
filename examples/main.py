@@ -31,7 +31,7 @@ myStepper.setSpeed(3000)             # 30 RPM
 myStepper2.setSpeed(3000)
 
 start = time.time()
-for i in range(100):
+for _ in range(10000):
     myStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
     myStepper2.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
 print(time.time()-start)
