@@ -25,7 +25,7 @@ def main():
     myStepper.setSpeed(3000)             # 30 RPM
 
     start = time.time()
-    myStepper.step(1570, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+    myStepper.step(1575, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
     print(time.time() - start)
 
     # c = 0
