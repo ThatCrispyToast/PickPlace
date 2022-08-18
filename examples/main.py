@@ -20,11 +20,11 @@ def turnOffMotors():
     mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
 atexit.register(turnOffMotors)
 
-def hola():
-    print("hola")
+def x_control(myStepper):
+    myStepper.step(X_STEPS, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
 
-def hello():
-    print("hello")
+def y_control(myStepper2):
+    myStepper2.step(Y_STEPS, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
 
 def main():
     myStepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
@@ -33,8 +33,8 @@ def main():
     myStepper2.setSpeed(3000)             # 30 RPM
 
     # create empty threads (these will hold the stepper 1 and 2 threads)
-    st1 = threading.Thread(target=hola)
-    st2 = threading.Thread(target=hello)
+    st1 = threading.Thread(target=x_control, args=(myStepper,))
+    st2 = threading.Thread(target=y_control, args=(myStepper2,))
 
     st1.start()
     st2.start()
