@@ -6,7 +6,7 @@ import time
 import atexit
 
 # create a default object, no changes to I2C address or frequency
-mh = Adafruit_MotorHAT(freq=3200)
+mh = Adafruit_MotorHAT()
 
 # recommended for auto-disabling motors on shutdown!
 def turnOffMotors():
