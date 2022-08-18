@@ -15,10 +15,17 @@ def turnOffMotors():
     mh.getMotor(3).run(Adafruit_MotorHAT.RELEASE)
     mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
 
-atexit.register(turnOffMotors)
+def main():
+    atexit.register(turnOffMotors)
 
-myStepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
-myStepper.setSpeed(3000)             # 30 RPM
+    myStepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
+    myStepper.setSpeed(3000)             # 30 RPM
 
-myStepper.step(100, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
-myStepper.step(100, Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
+    c = 0
+    while True:
+        myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+        c += 1
+        print(f"{c} Rotations")
+
+if __name__ == "__main__":
+    main()
