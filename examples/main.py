@@ -23,14 +23,14 @@ def main():
 
     start = time.time()
     myStepper.step(1450, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
-    print("7 Rotations")
+    print("7 1/4 Rotations")
     print(time.time() - start)
 
-    c = 0
-    while True:
-        myStepper.step(50, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
-        c += 1
-        print(c, " 1/4 Rotations")
+    # c = 0
+    # while True:
+    #     myStepper.step(50, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+    #     c += 1
+    #     print(c, " 1/4 Rotations")
 
 if __name__ == "__main__":
     main()
