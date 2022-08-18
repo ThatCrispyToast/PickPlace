@@ -26,6 +26,12 @@ def main():
     print("7 1/4 Rotations")
     print(time.time() - start)
 
+    c = 0
+    while True:
+        input()
+        myStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
+        c += 1
+
     # c = 0
     # while True:
     #     myStepper.step(50, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
