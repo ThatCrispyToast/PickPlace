@@ -42,8 +42,9 @@ def main():
     st1.start()
     st2.start()
 
-    st1.join()
-    st2.join()
+    # st1.join()
+    # st2.join()
+    time.sleep(50)
     print(time.time() - start)
 
     print("Hello")
