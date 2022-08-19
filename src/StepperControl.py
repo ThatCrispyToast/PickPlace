@@ -21,7 +21,7 @@ def turnOffMotors():
 atexit.register(turnOffMotors)
 
 def x_control(myStepper, steps, direction):
-    myStepper.step(steps, direction,  Adafruit_MotorHAT.SINGLE)
+    myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
     print("X Done")
 
 def y_control(myStepper2, steps, direction):
@@ -30,6 +30,7 @@ def y_control(myStepper2, steps, direction):
 
 myStepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
 myStepper.setSpeed(3000)             # 30 RPM
+
 myStepper2 = mh.getStepper(200, 2)  # 200 steps/rev, motor port #1
 myStepper2.setSpeed(3000)             # 30 RPM
 
