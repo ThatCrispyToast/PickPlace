@@ -22,9 +22,11 @@ atexit.register(turnOffMotors)
 
 def x_control(myStepper):
     myStepper.step(X_STEPS/2, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+    print("X Done")
 
 def y_control(myStepper2):
     myStepper2.step(Y_STEPS/2, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
+    print("Y Done")
 
 def main():
     myStepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
@@ -36,6 +38,7 @@ def main():
     st1 = threading.Thread(target=x_control, args=(myStepper,))
     st2 = threading.Thread(target=y_control, args=(myStepper2,))
 
+    print("Hola")
     st1.setDaemon(True)
     st2.setDaemon(True)
 
