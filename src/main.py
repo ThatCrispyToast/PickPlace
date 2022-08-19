@@ -1,4 +1,4 @@
-import StepperControl
+from StepperControl import StepperControl
 
 control = StepperControl()
 
