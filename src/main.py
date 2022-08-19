@@ -8,4 +8,4 @@ steppers = StepperControl()
 # steppers.move_x(StepperControl.X_LENGTH/2, StepperControl.LEFT, StepperControl.SINGLE, block=True)
 # print(time.time() - start)
 
-steppers.move_xy(StepperControl.X_LENGTH/2, StepperControl.LEFT, StepperControl.SINGLE, 523, StepperControl.FORWARD, StepperControl.SINGLE)
+print(steppers.move_xy(StepperControl.X_LENGTH/2, StepperControl.LEFT, StepperControl.SINGLE, 523, StepperControl.FORWARD, StepperControl.SINGLE))
