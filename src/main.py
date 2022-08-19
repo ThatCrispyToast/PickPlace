@@ -1,5 +1,6 @@
 #!/usr/bin/python
 #import Adafruit_MotorHAT, Adafruit_DCMotor, Adafruit_Stepper
+from traceback import print_tb
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor, Adafruit_StepperMotor
 
 import time
@@ -44,6 +45,7 @@ def main():
 
     # st1.join()
     # st2.join()
+    print("Hello, World!")
     time.sleep(50)
     print(time.time() - start)
 
