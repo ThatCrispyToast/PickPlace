@@ -1,5 +1,6 @@
 from StepperControl import StepperControl
 
-control = StepperControl()
+steppers = StepperControl()
 
-control.move_x(200, FORWARD)
+# Moves X Rail to 1/4 of It's Rail Length to the Left 
+steppers.move_x(StepperControl.X_LENGTH/4, StepperControl.FORWARD, StepperControl.SINGLE)
