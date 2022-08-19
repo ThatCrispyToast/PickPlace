@@ -9,4 +9,4 @@ steppers = StepperControl()
 # print(time.time() - start)
 
 print(steppers.move_xy(StepperControl.X_LENGTH/2, StepperControl.LEFT, StepperControl.SINGLE,
-                        StepperControl.Y_LENGTH/2, StepperControl.FORWARD, StepperControl.SINGLE))
+                        523, StepperControl.FORWARD, StepperControl.SINGLE))
