@@ -22,17 +22,25 @@ myStepper.setSpeed(30)             # 30 RPM
 
 while (True):
     print("Single coil steps")
+    start = time.time()
     myStepper.step(100, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
     myStepper.step(100, Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
+    print(time.time() - start)
 
+    start = time.time()
     print("Double coil steps")
     myStepper.step(100, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.DOUBLE)
     myStepper.step(100, Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.DOUBLE)
+    print(time.time() - start)
 
+    start = time.time()
     print("Interleaved coil steps")
     myStepper.step(100, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.INTERLEAVE)
     myStepper.step(100, Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.INTERLEAVE)
-
+    print(time.time() - start)
+    
+    start = time.time()
     print("Microsteps")
     myStepper.step(100, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.MICROSTEP)
     myStepper.step(100, Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+    print(time.time() - start)
