@@ -38,11 +38,13 @@ def main():
     st1 = multiprocessing.Process(target=x_control, args=(myStepper,))
     st2 = multiprocessing.Process(target=y_control, args=(myStepper2,))
 
+    start = time.time()
     st1.start()
     st2.start()
 
     st1.join()
     st2.join()
+    print(time.time() - start)
 
     print("Hello")
 
