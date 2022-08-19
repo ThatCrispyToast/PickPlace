@@ -37,11 +37,13 @@ def move_x(steps, direction):
     st1 = multiprocessing.Process(target=x_control, args=(myStepper, steps, direction))
 
     st1.start()
+    st1.join()
 
 def move_y(steps, direction):
     st2 = multiprocessing.Process(target=y_control, args=(myStepper2, steps, direction,))
 
     st2.start()
+    st2.join()
 
 
 
