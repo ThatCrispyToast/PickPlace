@@ -2,6 +2,7 @@ from StepperControl import StepperControl
 import time
 
 steppers = StepperControl()
+print("asd")
 
 # start = time.time()
 # steppers.move_y(523, StepperControl.FORWARD, StepperControl.SINGLE, block=False)

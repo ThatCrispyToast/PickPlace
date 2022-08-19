@@ -95,7 +95,7 @@ class StepperControl:
 
     def move_xy(self, xsteps, xdirection, xstep_type, ysteps, ydirection, ystep_type, block=True):
         if self.is_busy():
-            return False
+            return "asd"
         if block:
             if xsteps < ysteps:
                 self.move_x(xsteps, xdirection, xstep_type, block=False)
