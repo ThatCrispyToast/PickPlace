@@ -21,7 +21,7 @@ def turnOffMotors():
 atexit.register(turnOffMotors)
 
 def x_control(myStepper, steps, direction):
-    myStepper.step(steps, direction,  Adafruit_MotorHAT.SINGLE)
+    myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
     print("X Done")
 
 def y_control(myStepper2, steps, direction):
@@ -35,7 +35,6 @@ myStepper2 = mh.getStepper(200, 2)  # 200 steps/rev, motor port #1
 myStepper2.setSpeed(3000)             # 30 RPM
 
 def move_x(steps, direction):
-    print(steps, direction)
     st1 = multiprocessing.Process(target=x_control, args=(myStepper, steps, direction,))
 
     st1.start()
