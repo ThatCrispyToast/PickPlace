@@ -26,7 +26,7 @@ class StepperControl:
 
     def __init__(self, rpm=3000):
         # create a default object, no changes to I2C address or frequency
-        self.mh = Adafruit_MotorHAT()
+        self.mh = Adafruit_MotorHAT(freq=3200)
 
         # recommended for auto-disabling motors on shutdown!
         def turnOffMotors():
