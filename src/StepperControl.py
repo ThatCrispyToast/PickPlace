@@ -44,8 +44,3 @@ def move_y(steps, direction):
 
     st2.start()
     st2.join()
-
-
-
-if __name__ == "__main__":
-    main()
