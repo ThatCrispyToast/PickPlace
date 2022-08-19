@@ -45,3 +45,5 @@ def move_y(steps, direction):
 
     st2.start()
     st2.join()
+
+move_x(200, Adafruit_MotorHAT.FORWARD)
