@@ -34,7 +34,7 @@ myStepper2 = mh.getStepper(200, 2)  # 200 steps/rev, motor port #1
 myStepper2.setSpeed(3000)             # 30 RPM
 
 def move_x(steps, direction):
-    st1 = multiprocessing.Process(target=x_control, args=(myStepper, steps, direction))
+    st1 = multiprocessing.Process(target=x_control, args=(myStepper, steps, direction,))
 
     st1.start()
     st1.join()
