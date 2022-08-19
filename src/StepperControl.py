@@ -46,4 +46,4 @@ def move_y(steps, direction):
     st2.start()
     st2.join()
 
-move_y(200, Adafruit_MotorHAT.FORWARD)
+myStepper.step(200, Adafruit_MotorHAT.FORWARD,  Adafruit_MotorHAT.SINGLE)
