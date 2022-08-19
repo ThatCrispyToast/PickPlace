@@ -4,7 +4,7 @@ from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor, Adafruit_Step
 
 import time
 import atexit
-import threading
+import multiprocessing
 
 X_STEPS = 1490
 Y_STEPS = 1580
@@ -35,8 +35,8 @@ def main():
     myStepper2.setSpeed(3000)             # 30 RPM
 
     # create empty threads (these will hold the stepper 1 and 2 threads)
-    st1 = threading.Thread(target=x_control, args=(myStepper,))
-    st2 = threading.Thread(target=y_control, args=(myStepper2,))
+    st1 = multiprocessing.Process(target=x_control, args=(myStepper,))
+    st2 = multiprocessing.Process(target=y_control, args=(myStepper2,))
 
     st1.start()
     st2.start()
