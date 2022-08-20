@@ -63,7 +63,7 @@ class StepperControl:
     def move_x(self, steps, direction, step_type, block=True):
         if self.xbusy:
             return False
-        st1 = multiprocessing.Process(target=self.__x_control, args=(self.x_stepper, steps, direction, step_type,))
+        st1 = multiprocessing.Process(target=self.__x_control, args=(self.x_stepper, int(steps), direction, step_type,))
         st1.start()
         if block:
             st1.join()
@@ -72,7 +72,7 @@ class StepperControl:
     def move_y(self, steps, direction, step_type, block=True):
         if self.ybusy:
             return False
-        st2 = multiprocessing.Process(target=self.__y_control, args=(self.y_stepper, steps, direction, step_type,))
+        st2 = multiprocessing.Process(target=self.__y_control, args=(self.y_stepper, int(steps), direction, step_type,))
         st2.start()
         if block:
             st2.join()
