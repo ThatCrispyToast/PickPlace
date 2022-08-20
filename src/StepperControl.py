@@ -53,8 +53,8 @@ class StepperControl:
             return False
         self.xbusy = True
         x_stepper.step(steps, direction,  step_type)
-        x_steps += steps
-        print(x_steps)
+        self.x_steps += steps
+        print(self.x_steps)
         self.mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
         self.xbusy = False
         return True
@@ -64,7 +64,7 @@ class StepperControl:
             return False
         self.ybusy = True
         y_stepper.step(steps, direction,  step_type)
-        y_steps += steps
+        self.y_steps += steps
         self.mh.getMotor(2).run(Adafruit_MotorHAT.RELEASE)
         self.ybusy = False
         return True
