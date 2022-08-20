@@ -23,14 +23,14 @@ class StepperControl:
 
     def __init__(self, rpm=3000):
         # create a default object, no changes to I2C address or frequency
-        mh = Adafruit_MotorHAT()
+        self.mh = Adafruit_MotorHAT()
 
         # recommended for auto-disabling motors on shutdown!
         def turnOffMotors():
-            mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
-            mh.getMotor(2).run(Adafruit_MotorHAT.RELEASE)
-            mh.getMotor(3).run(Adafruit_MotorHAT.RELEASE)
-            mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
+            self.mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
+            self.mh.getMotor(2).run(Adafruit_MotorHAT.RELEASE)
+            self.mh.getMotor(3).run(Adafruit_MotorHAT.RELEASE)
+            self.mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
         atexit.register(turnOffMotors)
 
         self.x_stepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
@@ -47,13 +47,18 @@ class StepperControl:
             return False
         self.xbusy = True
         x_stepper.step(steps, direction,  step_type)
+        self.mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
         self.xbusy = False
         return True
 
     def __y_control(self, y_stepper, steps, direction, step_type):
+        if self.xbusy:
+            return False
         self.ybusy = True
         y_stepper.step(steps, direction,  step_type)
+        self.mh.getMotor(2).run(Adafruit_MotorHAT.RELEASE)
         self.ybusy = False
+        return True
 
     def move_x(self, steps, direction, step_type, block=True):
         if self.xbusy:
