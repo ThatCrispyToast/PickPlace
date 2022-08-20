@@ -83,3 +83,7 @@ class StepperControl:
 
     def is_busy(self):
         return not self.xbusy and not self.ybusy
+
+    def goto(self, x, y):
+        posx, posy = self.get_position()
+        
