@@ -156,7 +156,7 @@ class Adafruit_StepperMotor:
 
         for s in range(steps):
             lateststep = self.oneStep(direction, stepstyle)
-            time.sleep(s_per_s)
+            # time.sleep(s_per_s)
 
         if (stepstyle == Adafruit_MotorHAT.MICROSTEP):
             # this is an edge case, if we are in between full steps, lets just keep going
