@@ -79,11 +79,11 @@ class StepperControl:
         return True
 
     def get_position(self):
-        return self.x_stepper.currentstep, self.y_stepper.currentstep
+        return self.x_stepper.steppingcounter, self.y_stepper.steppingcounter
 
     def is_busy(self):
         return not self.xbusy and not self.ybusy
 
     def goto(self, x, y):
         posx, posy = self.get_position()
-        
+
