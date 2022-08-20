@@ -33,10 +33,10 @@ class StepperControl:
             self.mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
         atexit.register(turnOffMotors)
 
-        self.x_stepper = mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
+        self.x_stepper = self.mh.getStepper(200, 1)  # 200 steps/rev, motor port #1
         self.x_stepper.setSpeed(rpm)             # Attempts 3000 RPM
 
-        self.y_stepper = mh.getStepper(200, 2)  # 200 steps/rev, motor port #2
+        self.y_stepper = self.mh.getStepper(200, 2)  # 200 steps/rev, motor port #2
         self.y_stepper.setSpeed(rpm)             # Attempts 3000 RPM
         
         self.xbusy = False
