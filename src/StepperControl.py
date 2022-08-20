@@ -52,7 +52,7 @@ class StepperControl:
         return True
 
     def __y_control(self, y_stepper, steps, direction, step_type):
-        if self.xbusy:
+        if self.ybusy:
             return False
         self.ybusy = True
         y_stepper.step(steps, direction,  step_type)
