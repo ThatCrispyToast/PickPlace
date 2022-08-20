@@ -3,9 +3,8 @@ import time
 
 steppers = StepperControl()
 
+start = time.time()
 # Moves X Rail to 1/4 of It's Rail Length to the Left 
 steppers.move_y(523, StepperControl.FORWARD, StepperControl.SINGLE, block=False)
-print(steppers.is_busy())
 steppers.move_x(StepperControl.X_LENGTH/2, StepperControl.LEFT, StepperControl.SINGLE, block=True)
-print(steppers.get_position())
-print("Hello!")
+print(time.time() - start)
