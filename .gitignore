@@ -1,3 +1,9 @@
+.vscode/
+examples/
+setup.py
+oldREADME.md
+ez_setup.py
+
 setuptools-*
 # Byte-compiled / optimized / DLL files
 __pycache__/
