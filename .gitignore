@@ -56,3 +56,7 @@ docs/_build/
 target/
 
 .vscode/
+examples/
+setup.py
+oldREADME.md
+ez_setup.py
