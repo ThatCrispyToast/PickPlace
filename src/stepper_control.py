@@ -1,6 +1,5 @@
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
-from main import release
 
 class StepperControl:
     def __init__(self):
