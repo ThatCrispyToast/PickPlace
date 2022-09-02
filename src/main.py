@@ -15,6 +15,9 @@ x = time.time()
 
 for i in range(1490):
     kit.stepper1.onestep(style=stepper.DOUBLE)
+
+for i in range(1490):
+    kit.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
     # kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
 
 print(time.time() - x)
