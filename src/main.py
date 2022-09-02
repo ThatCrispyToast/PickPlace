@@ -14,7 +14,7 @@ def release():
 x = time.time()
 
 for i in range(1490):
-    kit.stepper1.onestep(style=stepper.DOUBLE)
+    kit.stepper1.onestep(style=stepper.MICROSTEP)
     # kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
 
 print(time.time() - x)
