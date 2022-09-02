@@ -1,6 +1,7 @@
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 import atexit
+from math import abs
 
 class StepperControl:
 
@@ -51,15 +52,15 @@ class StepperControl:
         self.release()
 
     def move(self, x, y, z):
-        max_move = max(x, y, z)
+        max_move = max(abs(x), abs(y), abs(z))
         for i in range(max_move):
-            if i < x:
+            if i < abs(x):
                 self.kit.stepper1.onestep(direction=StepperControl.LEFT if x > 0 else StepperControl.RIGHT, style=stepper.DOUBLE)
                 self.x_pos += 1 if x > 0 else -1
-            if i < y:
+            if i < abs(y):
                 self.kit.stepper2.onestep(direction=StepperControl.FORWARD if y > 0 else StepperControl.BACKWARD, style=stepper.DOUBLE)
                 self.y_pos += 1 if y > 0 else -1
-            if i < z:
+            if i < abs(z):
                 self.kit2.stepper1.onestep(direction=StepperControl.UP if z > 0 else StepperControl.DOWN, style=stepper.DOUBLE)
                 self.kit2.stepper2.onestep(direction=StepperControl.UP if z > 0 else StepperControl.DOWN, style=stepper.DOUBLE)
                 self.z_pos += 1 if z > 0 else -1

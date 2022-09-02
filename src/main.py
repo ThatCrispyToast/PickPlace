@@ -6,4 +6,4 @@ steppers = StepperControl()
 
 
 steppers.move(int(-steppers.X_LENGTH/2), int(-steppers.Y_LENGTH/2), int(-steppers.Z_LENGTH/2))
-print(steppers.get_pos)
+print(steppers.get_pos())
