@@ -16,6 +16,9 @@ class StepperControl:
     FORWARD = Adafruit_MotorHAT.FORWARD
     BACKWARD = Adafruit_MotorHAT.BACKWARD
 
+    UP = Adafruit_MotorHAT.FORWARD
+    DOWN = Adafruit_MotorHAT.BACKWARD
+
     SINGLE = Adafruit_MotorHAT.SINGLE
     DOUBLE = Adafruit_MotorHAT.DOUBLE
     INTERLEAVE = Adafruit_MotorHAT.INTERLEAVE
@@ -41,9 +44,17 @@ class StepperControl:
 
         self.y_stepper = self.mh.getStepper(200, 2)  # 200 steps/rev, motor port #2
         self.y_stepper.setSpeed(rpm)             # Attempts 3000 RPM
+
+        self.z1_stepper = self.mh.getStepper(200, 3)  # 200 steps/rev, motor port #2
+        self.z1_stepper.setSpeed(rpm)             # Attempts 3000 RPM
+
+        self.z2_stepper = self.mh.getStepper(200, 4)  # 200 steps/rev, motor port #2
+        self.z2_stepper.setSpeed(rpm)             # Attempts 3000 RPM
         
         self.xbusy = False
         self.ybusy = False
+        self.z1busy = False
+        self.z2busy = False
 
         # self.x_steps = 0
         # self.y_steps = 0
