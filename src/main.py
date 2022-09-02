@@ -8,7 +8,7 @@ total_individual = 0
 
 TRIALS = 10
 
-for i in range(TRAILS):
+for _ in range(TRIALS):
     start = time.time()
     steppers.move(int(steppers.X_LENGTH/2), int(steppers.Y_LENGTH/4), 0)
     total_combined += time.time() - start
@@ -18,5 +18,5 @@ for i in range(TRAILS):
     steppers.move_y(int(steppers.Y_LENGTH/4), StepperControl.BACKWARD)
     total_individual += time.time() - start
 
-print("Combined: ", total_combined / TRAILS)
-print("Individual: ", total_individual / TRAILS)
+print("Combined: ", total_combined / TRIALS)
+print("Individual: ", total_individual / TRIALS)
