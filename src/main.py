@@ -4,7 +4,7 @@ from adafruit_motor import stepper
 
 kit = MotorKit()
 
-print(kit.motor1.throttle)
+# print(kit.motor1.throttle)
 
 for i in range(200):
     kit.stepper1.onestep()
