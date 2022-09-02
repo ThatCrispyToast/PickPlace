@@ -5,4 +5,4 @@ import time
 steppers = StepperControl()
 
 
-print(move(200, 200, 200))
+print(steppers.move(200, 200, 200))
