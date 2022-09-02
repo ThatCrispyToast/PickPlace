@@ -4,12 +4,18 @@ import atexit
 
 class StepperControl:
 
+    # Movement Direction Constants
     UP = stepper.BACKWARD
     DOWN = stepper.FORWARD
     RIGHT = stepper.BACKWARD
     LEFT = stepper.FORWARD
     BACKWARD = stepper.BACKWARD
     FORWARD = stepper.FORWARD
+
+    # Track Lengths
+    X_LENGTH = 1490
+    Y_LENGTH = 1550
+    Z_LENGTH = 1490
 
     def __init__(self):
         self.kit = MotorKit()
