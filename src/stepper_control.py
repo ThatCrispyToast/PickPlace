@@ -15,7 +15,7 @@ class StepperControl:
     # Track Lengths
     X_LENGTH = 1490
     Y_LENGTH = 1550
-    Z_LENGTH = 1490
+    Z_LENGTH = 10500
 
     def __init__(self):
         self.kit = MotorKit()
