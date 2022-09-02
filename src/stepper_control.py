@@ -21,8 +21,12 @@ class StepperControl:
         self.kit2.stepper2.release()
 
     def move_x(self, steps, direction=LEFT):
-        for _ in range(steps):
-            self.kit.stepper1.onestep(direction=direction, style=stepper.DOUBLE)
+        try:
+            for _ in range(steps):
+                self.kit.stepper1.onestep(direction=direction, style=stepper.DOUBLE)
+        except KeyboardInterrupt as e:
+            self.release()
+            raise KeyboardInterrupt from e
         self.release()
     
     def move_y(self, steps, direction=FORWARD):
