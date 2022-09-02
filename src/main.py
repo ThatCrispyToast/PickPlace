@@ -1,6 +1,9 @@
 from stepper_control import StepperControl
 
-stepper_control = StepperControl()
+steppers = StepperControl()
 
-stepper_control.move_x(int(StepperControl.X_LENGTH/2), StepperControl.LEFT)
-print(stepper_control.get_pos())
+# steppers.move_x(int(StepperControl.X_LENGTH/2), StepperControl.LEFT
+steppers.move_z(800, StepperControl.UP)
+
+
+print(steppers.get_pos())
