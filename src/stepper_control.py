@@ -1,5 +1,6 @@
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
+import atexit
 
 class StepperControl:
 
@@ -13,6 +14,7 @@ class StepperControl:
     def __init__(self):
         self.kit = MotorKit()
         self.kit2 = MotorKit(address=0x61)
+        atexit.register(self.release)
 
     def release(self):
         self.kit.stepper1.release()
@@ -21,29 +23,17 @@ class StepperControl:
         self.kit2.stepper2.release()
 
     def move_x(self, steps, direction=LEFT):
-        try:
-            for _ in range(steps):
-                self.kit.stepper1.onestep(direction=direction, style=stepper.DOUBLE)
-        except KeyboardInterrupt as e:
-            self.release()
-            raise KeyboardInterrupt from e
+        for _ in range(steps):
+            self.kit.stepper1.onestep(direction=direction, style=stepper.DOUBLE)
         self.release()
     
     def move_y(self, steps, direction=FORWARD):
-        try:
-            for _ in range(steps):
-                self.kit.stepper2.onestep(direction=direction, style=stepper.DOUBLE)
-        except KeyboardInterrupt as e:
-            self.release()
-            raise KeyboardInterrupt from e
+        for _ in range(steps):
+            self.kit.stepper2.onestep(direction=direction, style=stepper.DOUBLE)
         self.release()
 
     def move_z(self, steps, direction=UP):
-        try:
-            for _ in range(steps):
-                self.kit2.stepper1.onestep(direction=direction, style=stepper.DOUBLE)
-                self.kit2.stepper2.onestep(direction=direction, style=stepper.DOUBLE)
-        except KeyboardInterrupt as e:
-            self.release()
-            raise KeyboardInterrupt from e
+        for _ in range(steps):
+            self.kit2.stepper1.onestep(direction=direction, style=stepper.DOUBLE)
+            self.kit2.stepper2.onestep(direction=direction, style=stepper.DOUBLE)
         self.release()
