@@ -1,7 +1,6 @@
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 import atexit
-from math import abs
 
 class StepperControl:
 
