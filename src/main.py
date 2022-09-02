@@ -11,13 +11,16 @@ def release():
     kit2.stepper1.release()
     kit2.stepper2.release()
 
+x = time.time()
 for i in range(400):
     kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
     kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-print("single")
+print(time.time() - x)
+x = time.time()
 for i in range(400):
     kit2.stepper1.onestep(direction=stepper.BACKWARD)
     kit2.stepper2.onestep(direction=stepper.BACKWARD)
+print(time.time() - x)
 
 
 release()
