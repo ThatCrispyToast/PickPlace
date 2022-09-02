@@ -4,10 +4,12 @@ from adafruit_motor import stepper
 
 kit = MotorKit()
 
-# print(kit.motor1.throttle)
+def release():
+    kit.stepper1.release()
+    kit.stepper2.release()
 
 for i in range(200):
     kit.stepper1.onestep()
-kit.stepper1.release()
-# for i in range(100):
-#     kit.stepper1.onestep()
+
+
+release()
