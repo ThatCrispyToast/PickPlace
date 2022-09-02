@@ -11,8 +11,9 @@ def release():
     kit2.stepper1.release()
     kit2.stepper2.release()
 
-for i in range(10):
+for i in range(200):
     kit2.stepper1.onestep()
+    kit2.stepper2.onestep()
 
 
 release()
