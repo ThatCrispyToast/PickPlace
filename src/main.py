@@ -16,8 +16,8 @@ for i in range(400):
     kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
 print("single")
 for i in range(400):
-    kit2.stepper1.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
-    kit2.stepper2.onestep(direction=stepper.BACKWARD, style=stepper.DOUBLE)
+    kit2.stepper1.onestep(direction=stepper.BACKWARD)
+    kit2.stepper2.onestep(direction=stepper.BACKWARD)
 
 
 release()
