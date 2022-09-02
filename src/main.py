@@ -5,4 +5,5 @@ import time
 steppers = StepperControl()
 
 
-print(steppers.move(200, 300, 100))
+steppers.move(steppers.X_LENGTH/2, steppers.Y_LENGTH/2, steppers.Z_LENGTH/2)
+print(steppers.get_pos)

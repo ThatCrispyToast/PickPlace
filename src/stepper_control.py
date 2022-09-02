@@ -51,7 +51,20 @@ class StepperControl:
         self.release()
 
     def move(self, x, y, z):
-        return max(x, y, z)
+        max_move = max(x, y, z)
+        for i in range(max_move):
+            if i < x:
+                self.kit.stepper1.onestep(direction=StepperControl.LEFT if x > 0 else StepperControl.RIGHT, style=stepper.DOUBLE)
+                self.x_pos += 1 if x > 0 else -1
+            if i < y:
+                self.kit.stepper2.onestep(direction=StepperControl.FORWARD if y > 0 else StepperControl.BACKWARD, style=stepper.DOUBLE)
+                self.y_pos += 1 if y > 0 else -1
+            if i < z:
+                self.kit2.stepper1.onestep(direction=StepperControl.UP if z > 0 else StepperControl.DOWN, style=stepper.DOUBLE)
+                self.kit2.stepper2.onestep(direction=StepperControl.UP if z > 0 else StepperControl.DOWN, style=stepper.DOUBLE)
+                self.z_pos += 1 if z > 0 else -1
+        self.release()
+        
     
     def get_pos(self):
         return (self.x_pos, self.y_pos, self.z_pos)
