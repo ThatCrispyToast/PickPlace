@@ -51,7 +51,7 @@ class StepperControl:
         self.release()
 
     def move(self, x, y, z):
-        return max(x, y, z)
+        return max(x, y)
     
     def get_pos(self):
         return (self.x_pos, self.y_pos, self.z_pos)
