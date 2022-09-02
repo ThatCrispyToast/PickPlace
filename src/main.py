@@ -8,5 +8,6 @@ kit = MotorKit()
 
 for i in range(200):
     kit.stepper1.onestep()
+kit.stepper1.release()
 # for i in range(100):
 #     kit.stepper1.onestep()
