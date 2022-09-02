@@ -3,13 +3,16 @@ from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 
 kit = MotorKit()
+kit2 = MotorKit(address=0x61)
 
 def release():
     kit.stepper1.release()
     kit.stepper2.release()
+    kit2.stepper1.release()
+    kit2.stepper2.release()
 
-for i in range(200):
-    kit.stepper1.onestep()
+for i in range(10):
+    kit2.stepper1.onestep()
 
 
 release()
