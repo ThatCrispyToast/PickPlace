@@ -18,9 +18,12 @@ class StepperControl:
     Z_LENGTH = 10400
 
     def __init__(self):
+        # Initialize Stepper Motors
         self.kit = MotorKit()
         self.kit2 = MotorKit(address=0x61)
+        # Register release function to be called on exit
         atexit.register(self.release)
+        # Initialize Position
         self.x_pos = 0
         self.y_pos = 0
         self.z_pos = 0
