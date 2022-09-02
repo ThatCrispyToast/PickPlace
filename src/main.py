@@ -19,5 +19,5 @@ from adafruit_motorkit import MotorKit
 
 kit = MotorKit()
 
-for i in range(100):
+for i in range(1490):
     kit.stepper1.onestep()
