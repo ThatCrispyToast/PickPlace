@@ -49,6 +49,9 @@ class StepperControl:
             self.kit2.stepper2.onestep(direction=direction, style=stepper.DOUBLE)
             self.z_pos += 1 if direction == StepperControl.UP else -1
         self.release()
+
+    def move(self, x, y, z):
+        return max(x, y, z)
     
     def get_pos(self):
         return (self.x_pos, self.y_pos, self.z_pos)
