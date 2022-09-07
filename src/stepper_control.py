@@ -28,6 +28,7 @@ class StepperControl:
         self.x_pos = 0
         self.y_pos = 0
         self.z_pos = 0
+        self.running = False
 
     def release(self):
         self.kit.stepper1.release()
@@ -100,6 +101,9 @@ class StepperControl:
         p1.start()
         p2.start()
         p3.start()
+        p1.join()
+        p2.join()
+        p3.join()
         
     
     def get_pos(self):
