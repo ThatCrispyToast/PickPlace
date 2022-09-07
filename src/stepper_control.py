@@ -36,25 +36,32 @@ class StepperControl:
         self.kit2.stepper2.release()
 
     def move_x(self, steps, direction=LEFT):
+        self.running = True
         for _ in range(steps):
             self.kit.stepper1.onestep(direction=direction, style=stepper.DOUBLE)
             self.x_pos += 1 if direction == StepperControl.LEFT else -1
         self.release()
+        self.running = False
     
     def move_y(self, steps, direction=FORWARD):
+        self.running = True
         for _ in range(steps):
             self.kit.stepper2.onestep(direction=direction, style=stepper.DOUBLE)
             self.y_pos += 1 if direction == StepperControl.FORWARD else -1
         self.release()
+        self.running = False
 
     def move_z(self, steps, direction=UP):
+        self.running = True
         for _ in range(steps):
             self.kit2.stepper1.onestep(direction=direction, style=stepper.DOUBLE)
             self.kit2.stepper2.onestep(direction=direction, style=stepper.DOUBLE)
             self.z_pos += 1 if direction == StepperControl.UP else -1
         self.release()
+        self.running = False
 
     def move(self, x, y, z):
+        self.running = True
         max_move = max(abs(x), abs(y), abs(z))
         for i in range(max_move):
             if i < abs(x):
@@ -68,8 +75,10 @@ class StepperControl:
                 self.kit2.stepper2.onestep(direction=StepperControl.UP if z > 0 else StepperControl.DOWN, style=stepper.DOUBLE)
                 self.z_pos += 1 if z > 0 else -1
         self.release()
+        self.running = False
 
     def move_async(self, x, y, z):
+        self.running = True
         if x < 0:
             x = abs(x)
             x_dir = StepperControl.RIGHT
@@ -82,9 +91,9 @@ class StepperControl:
             y_dir = StepperControl.FORWARD
         if z < 0:
             z = abs(z)
-            z_dir = StepperControl.UP
-        else:
             z_dir = StepperControl.DOWN
+        else:
+            z_dir = StepperControl.UP
         p1 = multiprocessing.Process(target=self.move_x, args=(x, x_dir,))
         p2 = multiprocessing.Process(target=self.move_y, args=(y, y_dir,))
         p3 = multiprocessing.Process(target=self.move_z, args=(z, z_dir,))
@@ -95,3 +104,6 @@ class StepperControl:
     
     def get_pos(self):
         return (self.x_pos, self.y_pos, self.z_pos)
+
+    def is_running(self):
+        return self.running
