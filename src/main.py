@@ -5,7 +5,7 @@ steppers = StepperControl()
 
 total = 0
 
-for _ in range(3):
+for _ in range(2):
     start = time.time()
     steppers.move_async(int(steppers.X_LENGTH/2), int(steppers.Y_LENGTH/4), int(steppers.Z_LENGTH/16))
     total += time.time() - start
@@ -13,4 +13,18 @@ for _ in range(3):
     steppers.move_async(int(-steppers.X_LENGTH/2), int(-steppers.Y_LENGTH/4), int(-steppers.Z_LENGTH/16))
     total += time.time() - start
 
-print(total/3)
+
+totala = 0
+
+for _ in range(2):
+    start = time.time()
+    steppers.move(int(steppers.X_LENGTH/2), int(steppers.Y_LENGTH/4), int(steppers.Z_LENGTH/16))
+    totala += time.time() - start
+    start = time.time()
+    steppers.move(int(-steppers.X_LENGTH/2), int(-steppers.Y_LENGTH/4), int(-steppers.Z_LENGTH/16))
+    totala += time.time() - start
+
+
+# Output:
+print(f"Async: {total/4} seconds")
+print(f"Sync: {totala/4} seconds")
