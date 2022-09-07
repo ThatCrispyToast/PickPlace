@@ -13,4 +13,4 @@ for _ in range(3):
     steppers.move(int(-steppers.X_LENGTH/2), int(-steppers.Y_LENGTH/4), int(-steppers.Z_LENGTH/16))
     total += time.time() - start
 
-print(total/10)
+print(total/3)
