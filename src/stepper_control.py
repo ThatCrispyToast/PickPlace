@@ -80,6 +80,7 @@ class StepperControl:
 
     def move_async(self, x, y, z):
         self.running = True
+        self.procs = []
         if x < 0:
             x = abs(x)
             x_dir = StepperControl.RIGHT
@@ -98,16 +99,16 @@ class StepperControl:
         p1 = multiprocessing.Process(target=self.move_x, args=(x, x_dir,))
         p2 = multiprocessing.Process(target=self.move_y, args=(y, y_dir,))
         p3 = multiprocessing.Process(target=self.move_z, args=(z, z_dir,))
+        self.procs.append(p1)
+        self.procs.append(p2)
+        self.procs.append(p3)
         p1.start()
         p2.start()
         p3.start()
-        p1.join()
-        p2.join()
-        p3.join()
         
     
     def get_pos(self):
         return (self.x_pos, self.y_pos, self.z_pos)
 
     def is_running(self):
-        return self.running
+        return any(proc.is_alive() for proc in self.procs)
