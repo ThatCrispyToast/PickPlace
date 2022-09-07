@@ -1,6 +1,7 @@
 from adafruit_motorkit import MotorKit
 from adafruit_motor import stepper
 import atexit
+import multiprocessing
 
 class StepperControl:
 
@@ -67,6 +68,29 @@ class StepperControl:
                 self.kit2.stepper2.onestep(direction=StepperControl.UP if z > 0 else StepperControl.DOWN, style=stepper.DOUBLE)
                 self.z_pos += 1 if z > 0 else -1
         self.release()
+
+    def move_async(self, x, y, z):
+        if x < 0:
+            x = abs(x)
+            x_dir = StepperControl.RIGHT
+        else:
+            x_dir = StepperControl.LEFT
+        if y < 0:
+            y = abs(y)
+            y_dir = StepperControl.BACKWARD
+        else:
+            y_dir = StepperControl.FORWARD
+        if z < 0:
+            z = abs(z)
+            z_dir = StepperControl.UP
+        else:
+            z_dir = StepperControl.DOWN
+        p1 = multiprocessing.Process(target=self.move_x, args=(x, x_dir,))
+        p2 = multiprocessing.Process(target=self.move_y, args=(y, y_dir,))
+        p3 = multiprocessing.Process(target=self.move_z, args=(z, z_dir,))
+        p1.start()
+        p2.start()
+        p3.start()
         
     
     def get_pos(self):

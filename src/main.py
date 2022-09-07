@@ -1,8 +1,5 @@
 from stepper_control import StepperControl
-import time
 
 steppers = StepperControl()
 
-start = time.time()
-steppers.move(int(steppers.X_LENGTH/2), int(steppers.Y_LENGTH/4), 0)
-total_combined += time.time() - start
+steppers.move_asyc(int(steppers.X_LENGTH/2), int(steppers.Y_LENGTH/4), int(steppers.Z_LENGTH/16))
