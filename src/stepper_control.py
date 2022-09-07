@@ -111,4 +111,4 @@ class StepperControl:
         return (self.x_pos, self.y_pos, self.z_pos)
 
     def is_running(self):
-        return any(proc.is_alive() for proc in self.procs)
+        return any(proc.is_alive() for proc in self.procs) or self.running
