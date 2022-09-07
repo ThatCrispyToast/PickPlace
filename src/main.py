@@ -26,5 +26,5 @@ for _ in range(2):
 
 
 # Output:
-print(f"Async: {total/4} seconds")
-print(f"Sync: {totala/4} seconds")
+print("Total time for async: ", total)
+print("Total time for sync: ", totala)
