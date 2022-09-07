@@ -100,7 +100,6 @@ class StepperControl:
         p1.start()
         p2.start()
         p3.start()
-        print("asd")
         
     
     def get_pos(self):
