@@ -55,6 +55,7 @@ class StepperControl:
         self.release()
 
     def move(self, x, y, z):
+        x, y, z = self.round_coodinates(x, y, z)
         max_move = max(abs(x), abs(y), abs(z))
         for i in range(max_move):
             if i < abs(x):
@@ -70,6 +71,7 @@ class StepperControl:
         self.release()
 
     def move_async(self, x, y, z):
+        x, y, z = self.round_coodinates(x, y, z)
         self.procs = []
         if x < 0:
             x = abs(x)
@@ -102,3 +104,6 @@ class StepperControl:
 
     def is_running(self):
         return any(proc.is_alive() for proc in self.procs)
+
+    def round_coodinates(self, x, y, z):
+        return (round(x), round(y), round(z))
